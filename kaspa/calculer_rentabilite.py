@@ -1,7 +1,7 @@
 import csv
 import subprocess
 
-subprocess.run(['python3', 'parse_data.py'])
+subprocess.run(['python3', '../parse_data.py'])
 
 # Variables pour stocker les données spécifiques à l'URL "https://www.f2pool.com/coin/kaspa"
 difficulte_reseau = 0.0
@@ -11,7 +11,7 @@ recompense_bloc = 0.0
 # Lire les valeurs du fichier CSV pour l'URL spécifique
 def lire_valeurs_csv():
     global difficulte_reseau, cours_crypto, recompense_bloc
-    with open('mining_data.csv', mode='r') as file:
+    with open('../mining_data.csv', mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if row['URL'] == 'https://www.f2pool.com/coin/kaspa':
