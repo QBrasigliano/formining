@@ -27,18 +27,16 @@ def lire_valeurs_csv():
 lire_valeurs_csv()
 
 def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, difficulte_reseau,
-                         recompense_bloc, cours_crypto, cout_electricite, frais_pool):
+                         recompense_bloc, cours_crypto, cout_electricite):
 
     # Calcul du revenu quotidien
     hashrate_hs = hashrate * 1e14
     revenu_quotidien_btc = (hashrate_hs / difficulte_reseau) * recompense_bloc
-    revenu_quotidien = revenu_quotidien_btc * cours_crypto
+    revenu_quotidien = (revenu_quotidien_btc * cours_crypto) * (90/100)
 
     # Calcul des coûts quotidiens
     consommation_quotidienne_kwh = (consommation_electrique * 24) / 1000
-    cout_electricite_quotidien = consommation_quotidienne_kwh * cout_electricite
-    frais_pool_euros = revenu_quotidien * (frais_pool / 100)
-    couts_quotidiens = cout_electricite_quotidien + frais_pool_euros
+    couts_quotidiens = consommation_quotidienne_kwh * cout_electricite
 
     # Calcul du profit quotidien
     profit_quotidien = revenu_quotidien - couts_quotidiens
@@ -49,18 +47,17 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
     return revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement
 
 # Données de votre machine (à compléter)
-hashrate = 400  # mH/s
-consommation_electrique = 100  # W
-cout_machine = 240 # €
+hashrate = 8000  # mH/s
+consommation_electrique = 3200  # W
+cout_machine = 2300 # €
 cout_electricite = 0.1  # €/kWh
-frais_pool = 0  # %
 
 # Conversion du cours de $ à € (taux de change approximatif)
 cours_crypto_euros = cours_crypto * 0.95
 
 revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement = calculer_rentabilite(
     hashrate, consommation_electrique, cout_machine, difficulte_reseau,
-    recompense_bloc, cours_crypto_euros, cout_electricite, frais_pool
+    recompense_bloc, cours_crypto_euros, cout_electricite
 )
 
 # Affichage des résultats
