@@ -11,10 +11,10 @@ recompense_bloc = 0.0
 # Lire les valeurs du fichier CSV pour l'URL spécifique
 def lire_valeurs_csv():
     global difficulte_reseau, cours_crypto, recompense_bloc
-    with open('../mining_data.csv', mode='r') as file:
+    with open('mining_data.csv', mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            if row['URL'] == 'https://www.f2pool.com/coin/kaspa':
+            if row['Coin'] == 'kaspa':
                 try:
                     difficulte_reseau = float(row['Difficulty'])
                     cours_crypto = float(row['Price'])
@@ -47,9 +47,9 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
     return revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement
 
 # Données de votre machine (à compléter)
-hashrate = 8000  # mH/s
-consommation_electrique = 3200  # W
-cout_machine = 2300 # €
+hashrate = 400  # mH/s
+consommation_electrique = 100  # W
+cout_machine = 240 # €
 cout_electricite = 0.1  # €/kWh
 
 # Conversion du cours de $ à € (taux de change approximatif)
