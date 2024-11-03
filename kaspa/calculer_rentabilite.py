@@ -47,21 +47,20 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
     return revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement
 
 # Données de votre machine (à compléter)
-hashrate = 400  # mH/s
-consommation_electrique = 100  # W
-cout_machine = 240 # €
+hashrate = 3800  # mH/s
+consommation_electrique = 0  # W
+cout_machine = 2500 # €
 cout_electricite = 0.1  # €/kWh
 
 # Conversion du cours de $ à € (taux de change approximatif)
-cours_crypto_euros = cours_crypto * 0.95
 
 revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement = calculer_rentabilite(
     hashrate, consommation_electrique, cout_machine, difficulte_reseau,
-    recompense_bloc, cours_crypto_euros, cout_electricite
+    recompense_bloc, cours_crypto, cout_electricite
 )
 
 # Affichage des résultats
-print(f"Revenu quotidien: {revenu_quotidien:.2f} €")
-print(f"Coûts quotidiens: {couts_quotidiens:.2f} €")
-print(f"Profit quotidien: {profit_quotidien:.2f} €")
+print(f"Revenu quotidien: {revenu_quotidien:.2f} $")
+print(f"Coûts quotidiens: {couts_quotidiens:.2f} $")
+print(f"Profit quotidien: {profit_quotidien:.2f} $")
 print(f"Retour sur investissement: {retour_investissement:.2f} jours")
