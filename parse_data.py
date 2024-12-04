@@ -63,4 +63,3 @@ with open('mining_data.csv', mode='w', newline='') as file:
 
         else:
             logger.error(f"Erreur lors de la récupération de la page : {response.status_code}")
-

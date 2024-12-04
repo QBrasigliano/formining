@@ -30,7 +30,7 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
                          recompense_bloc, cours_crypto, cout_electricite):
 
     # Calcul du revenu quotidien
-    hashrate_hs = hashrate * 1e14
+    hashrate_hs = hashrate * 1e5
     revenu_quotidien_btc = (hashrate_hs / difficulte_reseau) * recompense_bloc
     revenu_quotidien = (revenu_quotidien_btc * cours_crypto) * (90/100)
 
@@ -47,8 +47,8 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
     return revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement
 
 # Données de votre machine (à compléter)
-hashrate = 3800  # mH/s
-consommation_electrique = 0  # W
+hashrate = 21000000000000  # mH/s
+consommation_electrique = 3150  # W
 cout_machine = 2500 # €
 cout_electricite = 0.1  # €/kWh
 
