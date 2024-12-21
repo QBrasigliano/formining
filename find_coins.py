@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 import csv
+import os
 
 # Configurer le logger pour écraser le fichier à chaque exécution
 logging.basicConfig(filename='script.log', level=logging.INFO, format='%(message)s', filemode='w')
@@ -11,11 +12,12 @@ logger = logging.getLogger()
 urls = [
     'https://www.f2pool.com/coin/kaspa',
     'https://www.f2pool.com/coin/bitcoin',
-    'https://www.f2pool.com/coin/alephium'
+    'https://www.f2pool.com/coin/alephium',
+    'https://www.f2pool.com/coin/litecoin'
 ]
 
 # Ouvrir un fichier CSV pour écrire les données
-with open('mining_data.csv', mode='w', newline='') as file:
+with open('find_coins.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     # Écrire l'en-tête du CSV
     writer.writerow(['Coin', 'Block Reward', 'Difficulty', 'Price'])
@@ -63,3 +65,6 @@ with open('mining_data.csv', mode='w', newline='') as file:
 
         else:
             logger.error(f"Erreur lors de la récupération de la page : {response.status_code}")
+
+# Supprimer le fichier script.log
+os.remove('script.log')

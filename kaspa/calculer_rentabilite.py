@@ -1,7 +1,7 @@
 import csv
 import subprocess
 
-subprocess.run(['python3', '../parse_data.py'])
+subprocess.run(['python3', '../find_coins.py'])
 
 # Variables pour stocker les données spécifiques à l'URL "https://www.f2pool.com/coin/kaspa"
 difficulte_reseau = 0.0
@@ -11,10 +11,10 @@ recompense_bloc = 0.0
 # Lire les valeurs du fichier CSV pour l'URL spécifique
 def lire_valeurs_csv():
     global difficulte_reseau, cours_crypto, recompense_bloc
-    with open('mining_data.csv', mode='r') as file:
+    with open('find_coins.csv', mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            if row['Coin'] == 'kaspa':
+            if row['Coin'] == 'alephium':
                 try:
                     difficulte_reseau = float(row['Difficulty'])
                     cours_crypto = float(row['Price'])
@@ -47,10 +47,10 @@ def calculer_rentabilite(hashrate, consommation_electrique, cout_machine, diffic
     return revenu_quotidien, couts_quotidiens, profit_quotidien, retour_investissement
 
 # Données de votre machine (à compléter)
-hashrate = 21000000000000  # mH/s
-consommation_electrique = 3150  # W
-cout_machine = 2500 # €
-cout_electricite = 0.1  # €/kWh
+hashrate = 14000000000000  # mH/s
+consommation_electrique = 3420  # W
+cout_machine = 0 # €
+cout_electricite = 0  # €/kWh
 
 # Conversion du cours de $ à € (taux de change approximatif)
 
