@@ -13,7 +13,7 @@ urls = [
     'https://www.f2pool.com/coin/kaspa',
     'https://www.f2pool.com/coin/bitcoin',
     'https://www.f2pool.com/coin/alephium',
-    'https://www.f2pool.com/coin/litecoin'
+    'https://www.f2pool.com/coin/ethereum-classic'
 ]
 
 # Ouvrir un fichier CSV pour écrire les données
