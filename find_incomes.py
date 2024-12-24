@@ -21,9 +21,9 @@ litecoin_block_reward = None
 litecoin_difficulty = None
 litecoin_price = None
 
-etc_block_reward = None
-etc_difficulty = None
-etc_price = None
+ethereum_classic_block_reward = None
+ethereum_classic_difficulty = None
+ethereum_classic_price = None
 
 cout_elec = 0.05
 
@@ -44,9 +44,9 @@ with open('find_coins.csv', mode='r') as infile:
             kaspa_price = float(row['Price'])
 
         elif row['Coin'] == 'ethereum-classic':
-            etc_block_reward = float(row['Block Reward'])
-            etc_difficulty = float(row['Difficulty'])
-            etc_price = float(row['Price'])
+            ethereum_classic_block_reward = float(row['Block Reward'])
+            ethereum_classic_difficulty = float(row['Difficulty'])
+            ethereum_classic_price = float(row['Price'])
 
         elif row['Coin'] == 'bitcoin':
             bitcoin_block_reward = float(row['Block Reward'])
@@ -67,8 +67,8 @@ if bitcoin_block_reward is None or bitcoin_difficulty is None or bitcoin_price i
     raise ValueError("Difficulty for bitcoin not found in find_coins.csv")
 if litecoin_block_reward is None or litecoin_difficulty is None or litecoin_price is None:
     raise ValueError("Difficulty for litecoin not found in find_coins.csv")
-if etc_block_reward is None or etc_difficulty is None or etc_price is None:
-    raise ValueError("Difficulty for etc not found in find_coins.csv")
+if ethereum_classic_block_reward is None or ethereum_classic_difficulty is None or ethereum_classic_price is None:
+    raise ValueError("Difficulty for ethereum-classic not found in find_coins.csv")
 
 # Read the asic.csv file and filter rows with specific algorithms
 with open('asic.csv', mode='r') as infile:
@@ -141,7 +141,7 @@ with open('asic.csv', mode='r') as infile:
 
         elif row['Algorithm'] == 'ETC':
             hashrate = float(row['Hashrate'])
-            reward = float((((((hashrate / 1e7) * 1.75 / etc_difficulty) * etc_block_reward) * etc_price) * (90/100)) - consommation_elec)
+            reward = float((((((hashrate / 1e-2) * 0.8 / ethereum_classic_difficulty) * ethereum_classic_block_reward) * ethereum_classic_price) * (90/100)) - consommation_elec)
             row['result'] = reward
             if hashrate >= 1e12:
                 row['hashrate_valable'] = f"{float(hashrate / 1e12)} Th/s"
