@@ -80,7 +80,7 @@ with open('asic.csv', mode='r') as infile:
             consommation_elec = 0  # ou une autre valeur par défaut appropriée
         if row['Algorithm'] == 'ALPH':
             hashrate = float(row['Hashrate'])
-            reward = float((((((hashrate * 1e8) * 0.975 / alephium_difficulty) * alephium_block_reward) * alephium_price) * (90/100)) - consommation_elec)
+            reward = float((((((hashrate * 1e8) * 1.8 / alephium_difficulty) * alephium_block_reward) * alephium_price) * (90/100)) - consommation_elec)
             row['result'] = reward
             if hashrate > 1e12:
                 row['hashrate_valable'] = f"{float(hashrate / 1e12)} Th/s"
@@ -126,7 +126,7 @@ with open('asic.csv', mode='r') as infile:
 
         elif row['Algorithm'] == 'LTC':
             hashrate = float(row['Hashrate'])
-            reward = float((((((hashrate / 1e7) * 1.75 / litecoin_difficulty) * litecoin_block_reward) * litecoin_price) * (90/100)) - consommation_elec)
+            reward = float((((((hashrate / 1e7) * 2.5 / litecoin_difficulty) * litecoin_block_reward) * litecoin_price) * (90/100)) - consommation_elec)
             row['result'] = reward
             if hashrate >= 1e12:
                 row['hashrate_valable'] = f"{float(hashrate / 1e12)} Th/s"
